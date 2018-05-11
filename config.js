@@ -41,7 +41,7 @@ var config = {
     safe: {
       livenet: {
         provider: 'insight',
-        url: 'https://explorer.safecoin.org:443',
+        url: 'https://explorer2.safe.cash:443',
       },
       testnet: {
         provider: 'insight',
