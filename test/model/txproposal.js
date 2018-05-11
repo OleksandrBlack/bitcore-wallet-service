@@ -5,9 +5,9 @@ var chai = require('chai');
 var sinon = require('sinon');
 var should = chai.should();
 var TxProposal = require('../../lib/model/txproposal');
-var Bitcore = require('bitcore-lib-safe');
+var Bitcore = require('bitcore-lib');
 
-xdescribe('TxProposal', function() {
+describe('TxProposal', function() {
   describe('#create', function() {
     it('should create a TxProposal', function() {
       var txp = TxProposal.create(aTxpOpts());
@@ -24,10 +24,10 @@ xdescribe('TxProposal', function() {
       should.exist(txp);
       txp.amount.should.equal(aTXP().amount);
     });
-    it('should default to SAFE coin', function() {
+    it('should default to BTC coin', function() {
       var txp = TxProposal.fromObj(aTXP());
       should.exist(txp);
-      txp.coin.should.equal('safe');
+      txp.coin.should.equal('btc');
     });
   });
 
@@ -115,16 +115,16 @@ var theRawTx = '0100000001ab069f7073be9b491bb1ad4233a45d2e383082ccc7206df905662d
 
 var aTxpOpts = function() {
   var opts = {
-    coin: 'safe',
+    coin: 'btc',
     network: 'livenet',
     message: 'some message'
   };
   opts.outputs = [{
-    toAddress: "t1h8SqgtM3QM5e2M8EzhhT1yL2PXXtA6oqe",
+    toAddress: "18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7",
     amount: 10000000,
     message: "first message"
   }, {
-    toAddress: "t1h8SqgtM3QM5e2M8EzhhT1yL2PXXtA6oqe",
+    toAddress: "18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7",
     amount: 20000000,
     message: "second message"
   }, ];
@@ -171,11 +171,11 @@ var aTXP = function() {
     "actions": [],
     "fee": 10000,
     "outputs": [{
-      "toAddress": "t1h8SqgtM3QM5e2M8EzhhT1yL2PXXtA6oqe",
+      "toAddress": "18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7",
       "amount": 10000000,
       "message": "first message"
     }, {
-      "toAddress": "t1h8SqgtM3QM5e2M8EzhhT1yL2PXXtA6oqe",
+      "toAddress": "18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7",
       "amount": 20000000,
       "message": "second message"
     }, ],

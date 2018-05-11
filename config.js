@@ -1,7 +1,7 @@
 var config = {
   basePath: '/bws/api',
   disableLogs: false,
-  port: 9292,
+  port: 3232,
 
   // Uncomment to make BWS a forking server
   // cluster: true,
@@ -45,7 +45,10 @@ var config = {
       },
       testnet: {
         provider: 'insight',
-        url: 'https://testnet.safecoin.org:443',
+        url: 'https://explorer2.safe.cash:443',
+        // url: 'http://localhost:3001',
+        // Multiple servers (in priority order)
+        // url: ['http://a.b.c', 'https://test-insight.bitpay.com:443'],
       },
     },
   },

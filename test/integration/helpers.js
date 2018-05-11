@@ -12,9 +12,9 @@ var tingodb = require('tingodb')({
   memStore: true
 });
 
-var Bitcore = require('bitcore-lib-safe');
+var Bitcore = require('bitcore-lib');
 var Bitcore_ = {
-  safe: Bitcore
+  btc: Bitcore,
 };
 
 var Common = require('../../lib/common');
@@ -117,7 +117,7 @@ helpers._generateCopayersTestData = function() {
     'xprv9s21ZrQH143K3xgLzxd6SuWqG5Zp1iUmyGgSsJVhdQNeTzAqBFvXXLZqZzFZqocTx4HD9vUVYU27At5i8q46LmBXXL97fo4H9C3tHm4BnjY',
     'xprv9s21ZrQH143K48nfuK14gKJtML7eQzV2dAH1RaqAMj8v2zs79uaavA9UTWMxpBdgbMH2mhJLeKGq8AFA6GDnFyWP4rLmknqZAfgFFV718vo',
     'xprv9s21ZrQH143K44Bb9G3EVNmLfAUKjTBAA2YtKxF4zc8SLV1o15JBoddhGHE9PGLXePMbEsSjCCvTvP3fUv6yMXZrnHigBboRBn2DmNoJkJg',
-    'xprv9s21ZrQH143K48PpVxrh71KdViTFhAaiDSVtNFkmbWNYjwwwPbTrcqoVSafeBfue3Gq9b71hQeEbk67JgtTBcpYgKLF8pTwVnGz56f1BaCYt',
+    'xprv9s21ZrQH143K48PpVxrh71KdViTFhAaiDSVtNFkmbWNYjwwwPbTrcqoVXsgBfue3Gq9b71hQeEbk67JgtTBcpYgKLF8pTwVnGz56f1BaCYt',
     'xprv9s21ZrQH143K3pgRcRBRnmcxNkNNLmJrpneMkEXY6o5TWBuJLMfdRpAWdb2cG3yxbL4DxfpUnQpjfQUmwPdVrRGoDJmtAf5u8cyqKCoDV97',
     'xprv9s21ZrQH143K3nvcmdjDDDZbDJHpfWZCUiunwraZdcamYcafHvUnZfV51fivH9FPyfo12NyKH5JDxGLsQePyWKtTiJx3pkEaiwxsMLkVapp',
     'xprv9s21ZrQH143K2uYgqtYtphEQkFAgiWSqahFUWjgCdKykJagiNDz6Lf7xRVQdtZ7MvkhX9V3pEcK3xTAWZ6Y6ecJqrXnCpzrH9GSHn8wyrT5',
@@ -131,18 +131,18 @@ helpers._generateCopayersTestData = function() {
 
     var xpriv_45H = xpriv.deriveChild(45, true);
     var xpub_45H = Bitcore.HDPublicKey(xpriv_45H);
-    var id45 = Model.Copayer._xPubToCopayerId('safe', xpub_45H.toString());
+    var id45 = Model.Copayer._xPubToCopayerId('btc', xpub_45H.toString());
 
     var xpriv_44H_0H_0H = xpriv.deriveChild(44, true).deriveChild(0, true).deriveChild(0, true);
     var xpub_44H_0H_0H = Bitcore.HDPublicKey(xpriv_44H_0H_0H);
-    var id44btcz = Model.Copayer._xPubToCopayerId('safe', xpub_44H_0H_0H.toString());
+    var id44btc = Model.Copayer._xPubToCopayerId('btc', xpub_44H_0H_0H.toString());
 
     var xpriv_1H = xpriv.deriveChild(1, true);
     var xpub_1H = Bitcore.HDPublicKey(xpriv_1H);
     var priv = xpriv_1H.deriveChild(0).privateKey;
     var pub = xpub_1H.deriveChild(0).publicKey;
 
-    console.log('{id44btcz: ', "'" + id44btcz + "',");
+    console.log('{id44btc: ', "'" + id44btc + "',");
     console.log('id45: ', "'" + id45 + "',");
     console.log('xPrivKey: ', "'" + xpriv.toString() + "',");
     console.log('xPubKey: ', "'" + xpub.toString() + "',");
@@ -181,7 +181,7 @@ helpers.createAndJoinWallet = function(m, n, opts, cb) {
     n: n,
     pubKey: TestData.keyPair.pub,
     singleAddress: !!opts.singleAddress,
-    coin: opts.coin || 'safe',
+    coin: opts.coin || 'btc',
   };
   if (_.isBoolean(opts.supportBIP44AndP2PKH))
     walletOpts.supportBIP44AndP2PKH = opts.supportBIP44AndP2PKH;
@@ -239,7 +239,7 @@ helpers._parseAmount = function(str) {
 
   if (_.isNumber(str)) str = str.toString();
 
-  var re = /^((?:\d+c)|u)?\s*([\d\.]+)\s*(safe|bit|sat)?$/;
+  var re = /^((?:\d+c)|u)?\s*([\d\.]+)\s*(btc|bit|sat)?$/;
   var match = str.match(re);
 
   if (!match) throw new Error('Could not parse amount ' + str);
@@ -251,7 +251,7 @@ helpers._parseAmount = function(str) {
 
   switch (match[3]) {
     default:
-    case 'safe':
+    case 'btc':
       result.amount = Utils.strip(+match[2] * 1e8);
       break;
     case 'bit':

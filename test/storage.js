@@ -54,7 +54,7 @@ describe('Storage', function() {
         name: 'my wallet',
         m: 2,
         n: 3,
-        coin: 'safe',
+        coin: 'btc',
         network: 'livenet',
       });
       should.exist(wallet);
@@ -87,12 +87,12 @@ describe('Storage', function() {
         name: 'my wallet',
         m: 2,
         n: 3,
-        coin: 'safe',
+        coin: 'btc',
         network: 'livenet',
       });
       _.each(_.range(3), function(i) {
         var copayer = Model.Copayer.create({
-          coin: 'safe',
+          coin: 'btc',
           name: 'copayer ' + i,
           xPubKey: 'xPubKey ' + i,
           requestPubKey: 'requestPubKey ' + i,
@@ -132,12 +132,12 @@ describe('Storage', function() {
         name: 'my wallet',
         m: 2,
         n: 3,
-        coin: 'safe',
+        coin: 'btc',
         network: 'livenet',
       });
       _.each(_.range(3), function(i) {
         var copayer = Model.Copayer.create({
-          coin: 'safe',
+          coin: 'btc',
           name: 'copayer ' + i,
           xPubKey: 'xPubKey ' + i,
           requestPubKey: 'requestPubKey ' + i,
@@ -152,10 +152,10 @@ describe('Storage', function() {
         proposals = _.map(_.range(4), function(i) {
           var tx = Model.TxProposal.create({
             walletId: '123',
-            coin: 'safe',
+            coin: 'btc',
             network: 'livenet',
             outputs: [{
-              toAddress: 't1h8SqgtM3QM5e2M8EzhhT1yL2PXXtA6oqe',
+              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
               amount: i + 100,
             }],
             feePerKb: 100e2,

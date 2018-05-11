@@ -1,8 +1,8 @@
 {
-  "name": "bitcore-wallet-service",
-  "description": "A service for Mutisig HD SafeCoin Wallets",
-  "author": "SafeCoin DEV TEAM",
-  "version": "1.0.0",
+  "name": "bitcore-wallet-service-safe",
+  "description": "A service for Mutisig HD Bitcoin Wallets",
+  "author": "Safecoin Foundation",
+  "version": "1.0.1",
   "licence": "MIT",
   "keywords": [
     "bitcoin",
@@ -58,7 +58,6 @@
     "jsdoc": "^3.3.0-beta1",
     "memdown": "^1.0.0",
     "mocha": "^1.18.2",
-    "node-inspector": "^1.1.2",
     "proxyquire": "^1.7.2",
     "sinon": "1.10.3",
     "supertest": "*",
@@ -68,8 +67,7 @@
     "start": "./start.sh",
     "stop": "./stop.sh",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --reporter spec test",
-    "test": "mocha",
-    "debug": "node-inspector & mocha --debug-brk",
+    "test": "./node_modules/.bin/mocha",
     "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "bitcoreNode": "./bitcorenode",
