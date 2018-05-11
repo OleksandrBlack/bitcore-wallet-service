@@ -43,10 +43,10 @@ var config = {
         provider: 'insight',
         url: 'https://explorer.safecoin.org:443',
       },
-//      testnet: {
-//        provider: 'insight',
-//        url: 'https://testnet.safecoin.org:443',
-//      },
+      testnet: {
+        provider: 'insight',
+        url: 'https://testnet.safecoin.org:443',
+      },
     },
   },
   pushNotificationsOpts: {
