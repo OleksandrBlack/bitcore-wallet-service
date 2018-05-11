@@ -45,7 +45,7 @@ var config = {
       },
       /*testnet: {
         provider: 'insight',
-        url: 'https://testnet.safecoin.org:443',
+        url: 'https://testnet.safecoin.org:443', // TODO
       },*/
     },
   },
