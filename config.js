@@ -1,7 +1,7 @@
 var config = {
   basePath: '/bws/api',
   disableLogs: false,
-  port: 3232,
+  port: 9292,
 
   // Uncomment to make BWS a forking server
   // cluster: true,
