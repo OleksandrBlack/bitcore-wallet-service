@@ -41,11 +41,11 @@ var config = {
     safe: {
       livenet: {
         provider: 'insight',
-        url: 'https://explorer2.safe.cash:443',
+        url: 'https://explorer.safecoin.org:443',
       },
       testnet: {
         provider: 'insight',
-        url: 'https://explorer2.safe.cash:443',
+        url: 'https://explorer.safecoin.org:443',
         // url: 'http://localhost:3001',
         // Multiple servers (in priority order)
         // url: ['http://a.b.c', 'https://test-insight.bitpay.com:443'],
